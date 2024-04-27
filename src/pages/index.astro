@@ -2,6 +2,8 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
+import Hero2 from '~/components/widgets/Hero2.astro';
+
 import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
@@ -12,6 +14,8 @@ import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
+const manImg = '~/assets/images/man-image.png';
+
 const metadata = {
   title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
   ignoreTitleTemplate: true,
@@ -21,7 +25,7 @@ const metadata = {
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
 
-  <Hero
+  <!-- <Hero
     actions={[
       {
         variant: 'primary',
@@ -45,14 +49,105 @@ const metadata = {
         + Tailwind CSS.</span
       >
       <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
-       Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages
-      & Blogs.
+      Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages &
+      Blogs.
     </Fragment>
-  </Hero>
+  </Hero> -->
 
+  <Hero2
+    tagline="SaaS Web Demo"
+    actions={[
+      { variant: 'primary', target: '_blank', text: 'Get Started', href: 'https://github.com/onwidget/astrowind' },
+      { text: 'Learn more', href: '#features' },
+    ]}
+    image={{
+      src: '~/assets/images/man-image-hero.png',
+      alt: 'Man image with diffrent tools Hero Image',
+    }}
+  >
+    <Fragment slot="title">
+      Unbeatable Landing Pages For:
+      <span class="text-[--aw-color-primary] dark:text-accent highlight">Small Businesses </span>
+      <br />
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="hidden sm:inline"> </span>
+      I make superb <span class="font-semibold">budget-friendly</span> websites for small to medium-sized businesses who
+      want effective, user-friendly, and beautiful websites your customers will love.
+    </Fragment>
+  </Hero2>
   <!-- Note Widget ******************* -->
 
   <Note />
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="Most used widgets"
+    subtitle="Provides frequently used components for building websites using Tailwind CSS"
+    tagline="QUALITY AND AFFORDABLE"
+    items={[
+      {
+        title: 'User-Experience Focused',
+        description:
+          'Your site will be easy enough to customize that anyone can pick it up to make a change big or small, from text changes to adding new pages.',
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: 'Conversion Optimized',
+        description:
+          'I know the little tricks that can push people to convert from a visitor to a customer. I help make your site pay for itself by optimizing the little details.',
+        icon: 'flat-color-icons:gallery',
+      },
+      {
+        title: 'Mobile Optimized',
+        description:
+          '52% of people are viewing websites on a phone. I know its more than just important so its standard that every page is responsive.',
+        icon: 'flat-color-icons:approval',
+      },
+      {
+        title: 'Easily Editable',
+        description:
+          'Your site will be easy enough to customize that anyone can pick it up to make a change big or small, from text changes to adding new pages.',
+        icon: 'flat-color-icons:document',
+      },
+      {
+        title: 'Search Engine Optimized',
+        description:
+          'Your site will follow the best SEO practices to begin its ranking including meta data, proper markup, sitemaps, image names, accessibility, and more!',
+        icon: 'flat-color-icons:advertising',
+      },
+      {
+        title: 'Beautifully Designed',
+        description:
+          'Your website won’t be from a cookie-cutter layout. It will be designed to beautifully fit the style of your brand from fonts, icons, colors, and more!',
+        icon: 'flat-color-icons:currency-exchange',
+      },
+      {
+        title: 'Speed Optimized',
+        description:
+          'Your site will be developed with speed optimization in mind and performance in mind. No site should be slow for its users losing out on customers.',
+        icon: 'flat-color-icons:business-contact',
+      },
+      {
+        title: 'Client-Loved',
+        description:
+          'With 5/5 stars on Google to prove it, my clients love their websites. Also a fast turn-around time, email support, and a smooth website build process.',
+        icon: 'flat-color-icons:business-contact',
+      },
+      {
+        title: 'One-Stop-Shop Support',
+        description:
+          'It won’t be just a website, ill be one email away for any website support you need. I often help out free if its a quick change, or for a compatible cheap rate.',
+        icon: 'flat-color-icons:database',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
 
   <!-- Features Widget *************** -->
 
@@ -105,23 +200,32 @@ const metadata = {
 
   <Content
     isReversed
-    tagline="Inside template"
-    title="AstroWind's Blueprint: Fun Meets Functionality!"
+    tagline="Why work with us"
+    title="4 Reasons why you should Choose me!"
     items={[
       {
-        title: 'Built on top of Astro 4.0',
+        title: 'Exceptional Design Quality',
         description:
-          'Benefiting from the performance and developer-friendly features of this modern static site generator.',
+          'I always deliver outstanding designs that captivate and inspire, driven by my commitment to excellence.',
+        icon: 'tabler:diamond',
       },
       {
-        title: 'Styled using Tailwind CSS',
+        title: 'Unmatched Creativity',
         description:
-          'Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.',
+          'I always brings fresh and innovative ideas to every project, crafting unique designs that set my clients apart',
+        icon: 'tabler:wand',
       },
       {
-        title: 'Cross-browser compatibility',
+        title: 'Fast Turnaround Time',
         description:
-          'Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.',
+          'I understand the importance of timely delivery, helping you meet deadlines and launch your materials promptly.',
+        icon: 'tabler:clock-24',
+      },
+      {
+        title: 'Client-Centric Approach',
+        description:
+          'I prioritize your needs, understanding your goals to tailor designs that align with your brand identity.',
+        icon: 'tabler:mood-heart',
       },
     ]}
     image={{
@@ -130,84 +234,9 @@ const metadata = {
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
-       Gain a competitive advantage by incorporating industry leading practices
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building a modern Website</h3>
+      Let us help you make the best website that helps you reach more customers.
     </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isAfterContent
-    items={[
-      {
-        title: 'High level of customization',
-        description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
-      },
-      {
-        title: 'Multiple layout possibilities',
-        description:
-          'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
-      },
-      {
-        title: 'Fully responsive design',
-        description:
-          "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
-      },
-      {
-        title: 'Integration of media',
-        description:
-          'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
-      alt: 'Blueprint Image',
-    }}
-  >
-    <Fragment slot="content">Ensure your online presence truly represents you.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent
-    items={[
-      {
-        title: 'Enhanced user engagement',
-        description:
-          'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.',
-      },
-      {
-        title: 'Continuous improvement',
-        description:
-          'Ensure your website stays aligned with the latest trends and technologies through regular updates and enhancements.',
-      },
-      {
-        title: 'Time and resource efficiency',
-        description:
-          'Skip the time-consuming process of building a website from scratch and launch your online presence sooner with AstroWind.',
-      },
-      {
-        title: 'Community support',
-        description: `Join the growing AstroWind community for insights, resources, and assistance, ensuring you're never alone on your web development journey.`,
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Astronauts Image',
-    }}
-  >
-    <Fragment slot="content">Designed to foster growth and success.</Fragment>
 
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
@@ -247,70 +276,6 @@ const metadata = {
       alt: 'Steps image',
     }}
   />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Most used widgets"
-    subtitle="Provides frequently used components for building websites using Tailwind CSS"
-    tagline="Components"
-    items={[
-      {
-        title: 'Headers',
-        description: "Ever tried driving without GPS? Boom! That's why websites need headers for direction.",
-        icon: 'flat-color-icons:template',
-      },
-      {
-        title: 'Heros',
-        description:
-          "Picture a superhero landing – epic, right? That's the job of a Hero section, making grand entrances!",
-        icon: 'flat-color-icons:gallery',
-      },
-      {
-        title: 'Features',
-        description:
-          'Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!',
-        icon: 'flat-color-icons:approval',
-      },
-      {
-        title: 'Content',
-        description:
-          "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king.",
-        icon: 'flat-color-icons:document',
-      },
-      {
-        title: 'Call-to-Action',
-        description:
-          'That enthusiastic friend who\'s always urging, "Do it! Do it!"? Yeah, that\'s this button nudging you towards adventure.',
-        icon: 'flat-color-icons:advertising',
-      },
-      {
-        title: 'Pricing',
-        description: 'Behold the dessert menu of the website world. Tempting choices await, can you resist?',
-        icon: 'flat-color-icons:currency-exchange',
-      },
-      {
-        title: 'Testimonial',
-        description: 'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
-        icon: 'flat-color-icons:voice-presentation',
-      },
-      {
-        title: 'Contact',
-        description:
-          'Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.',
-        icon: 'flat-color-icons:business-contact',
-      },
-      {
-        title: 'Footers',
-        description: "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
-        icon: 'flat-color-icons:database',
-      },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Features2>
 
   <!-- HighlightedPosts Widget ******* -->
 

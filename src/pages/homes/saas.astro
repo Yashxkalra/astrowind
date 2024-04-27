@@ -24,7 +24,7 @@ const metadata = {
       actions={[
         {
           variant: 'secondary',
-          text: 'Login',
+          text: 'Get in touch now',
           href: '#',
         },
         {
@@ -34,6 +34,7 @@ const metadata = {
         },
       ]}
       isSticky
+      showToggleTheme
     />
   </Fragment>
 
@@ -51,17 +52,15 @@ const metadata = {
     }}
   >
     <Fragment slot="title">
-      Simplify web design with Astrowind: <br /> your ultimate <span class="text-accent dark:text-white highlight"
-        >SaaS</span
-      > companion<br />
+      Unbeatable Landing Pages For:
+      <span class="text-[--aw-color-primary] dark:text-accent highlight">Small Businesses </span>
+      <br />
     </Fragment>
 
     <Fragment slot="subtitle">
-      <span class="hidden sm:inline">
-        Elevate your website creation process with <span class="font-semibold">AstroWind</span>'s SaaS solutions.</span
-      >
-       Seamlessly blend the power of Astro 4.0 and Tailwind CSS to craft websites that resonate with your brand and
-      audience.
+      <span class="hidden sm:inline"> </span>
+      I make superb <span class="font-semibold">budget-friendly</span> websites for small to medium-sized businesses who
+      want effective, user-friendly, and beautiful websites your customers will love.
     </Fragment>
   </Hero2>
 
@@ -69,18 +68,18 @@ const metadata = {
 
   <Features
     id="features"
-    title="Why choose AstroWind?"
+    title="Why choose SillyWeb?"
     subtitle="Each of the following features enhances AstroWind's value proposition."
     columns={2}
     items={[
       {
-        title: 'Integration of Astro 4.0 and Tailwind CSS',
+        title: 'User-Experience Focused',
         description:
           'Offers a powerful combination that enhances both the development process and the end-user experience. Also, allows to build dynamic and visually stunning websites with optimized performance.',
         icon: 'tabler:layers-union',
       },
       {
-        title: 'Versatile design for startups, small businesses, and more',
+        title: 'Conversion Rate Optimized',
         description: `Easily customize AstroWind to harmonize with the unique branding and identity of your venture. AstroWind's versatile design adapts to suit your needs.`,
         icon: 'tabler:artboard',
       },
