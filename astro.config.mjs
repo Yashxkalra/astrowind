@@ -33,9 +33,6 @@ export default defineConfig({
     }),
     sitemap(),
     mdx(),
-    UnoCSS({
-      injectReset: true, // or a path to the reset file
-    }),
 
     icon({
       include: {

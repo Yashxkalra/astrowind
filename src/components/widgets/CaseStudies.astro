@@ -1,0 +1,92 @@
+---
+// Here we import necessary components and utilities
+
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro'; // WidgetWrapper component for wrapping the entire widget
+import Headline from '~/components/ui/Headline.astro'; // Headline component for displaying titles and taglines
+import { twMerge } from 'tailwind-merge'; // Utility for merging Tailwind CSS classes
+
+import Image from '~/components/common/Image.astro'; // Asset component for displaying images
+import Button from '../ui/Button.astro'; // Button component
+
+// Destructuring props with default values and slot content
+const {
+  title = await Astro.slots.render('title'), // Title of the widget
+  subtitle = await Astro.slots.render('subtitle'), // Subtitle of the widget
+  tagline = await Astro.slots.render('tagline'), // Tagline of the widget
+
+  columns = 2, // Number of columns in the grid layout (default: 2)
+  mainTitle, // Main title displayed in the widget
+  description, // Description text displayed in the widget
+  numbersItem = [], // Array of number items to display
+  callToAction, // Call to action button or buttons
+  image = await Astro.slots.render('image'), // Image displayed in the widget
+
+  id, // Unique identifier for the widget
+  isDark = false, // Dark mode flag (default: false)
+  classes = {}, // Custom classes for styling
+  bg = await Astro.slots.render('bg'), // Background color of the widget
+} = Astro.props; // Props passed to the widget component
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+  <Headline title={title} subtitle={subtitle} tagline={tagline} classes={classes?.headline as Record<string, string>} />
+
+  <div class="slick-wrapper">
+    <div
+      class="gap-4 md:gap-6 rounded-lg shadow-[0_4px_30px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur border border-[#ffffff29] bg-white dark:bg-[#8bdc180a] p-6"
+    >
+      <div class={twMerge(`grid gap-8 gap-x-12 sm:gap-y-8 items-center ${columns === 2 ? 'sm:grid-cols-2 ' : ''}`)}>
+        <div class="max-h-96 overflow-hidden">
+          {
+            image && (
+              <Image
+                class="mx-auto rounded-md w-full object-center-important"
+                widths={[400, 768, 1024, 2040]}
+                sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+                loading="eager"
+                width={600}
+                height={600}
+                {...image}
+              />
+            )
+          }
+        </div>
+        <div class={twMerge('relative flex flex-col p-10')}>
+          <h3 class={twMerge('text-4xl font-bold')}>{mainTitle}</h3>
+          {description && <p class={twMerge('text-muted mt-4')} set:html={description} />}
+
+          <div class="mt-6 flex gap-4">
+            {
+              // Rendering number items with title and description
+              numbersItem.map(({ title, description }) => (
+                <div class={twMerge('relative flex flex-col ')}>
+                  <div class={twMerge('text-3xl font-bold text-primary dark:text-white')}>{title}</div>
+                  {description && <p class={twMerge('text-muted mt-2')} set:html={description} />}
+                </div>
+              ))
+            }
+          </div>
+
+          {
+            // Rendering call to action button(s)
+            callToAction && (
+              <div class="mt-4">
+                {Array.isArray(callToAction) ? (
+                  // If callToAction is an array, render multiple buttons
+                  callToAction.map((action) => (
+                    <div class="flex w-full sm:w-auto">
+                      <Button {...(action || {})} />
+                    </div>
+                  ))
+                ) : (
+                  // Otherwise, render a single button or HTML fragment
+                  <div set:html={callToAction} />
+                )}
+              </div>
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</WidgetWrapper>

@@ -9,6 +9,7 @@
   .bg-dark {
     background-color: var(--aw-color-bg-page-dark);
   }
+
   .bg-light {
     background-color: var(--aw-color-bg-page);
   }
@@ -29,11 +30,11 @@
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center  border-gray-400 border bg-transparent font-medium text-center text-base text-page leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 dark:text-slate-300 dark:border-slate-500 dark:hover:bg-slate-800 dark:hover:border-slate-800 cursor-pointer;
+    @apply inline-flex items-center justify-center  border-gray-400 border bg-transparent font-medium text-center text-base text-page leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 dark:text-slate-300 dark:border-slate-500 dark:hover:bg-[#049b931a] dark:hover:border-slate-800 cursor-pointer;
   }
 
   .btn-primary {
-    @apply btn font-semibold bg-primary text-white border-primary hover:bg-[secondary] hover:border-secondary hover:text-white dark:text-[--aw-color-text-btn-dark] dark:bg-[primary] dark:border-primary dark:hover:border-secondary dark:hover:bg-[--aw-color-bg-btn-hover];
+    @apply btn font-semibold bg-primary text-white border-primary hover:bg-[#00ccbe] hover:border-secondary hover:text-white dark:text-[--aw-color-text-btn-dark] dark:bg-[primary] dark:border-primary dark:hover:border-primary dark:hover:bg-[#bfff1f];
   }
 
   .btn-secondary {
@@ -51,7 +52,7 @@
 }
 .dark #header.scroll > div:first-child,
 #header.scroll.dark > div:first-child {
-  @apply bg-page md:bg-[#030621e6] border-b border-gray-500/20;
+  @apply bg-page bg-[--aw-color-bg-verydark] border-b border-gray-500/20;
   box-shadow: none;
 }
 /* #header.scroll > div:last-child {
