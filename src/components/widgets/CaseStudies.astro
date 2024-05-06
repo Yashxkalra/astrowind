@@ -4,22 +4,19 @@
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro'; // WidgetWrapper component for wrapping the entire widget
 import Headline from '~/components/ui/Headline.astro'; // Headline component for displaying titles and taglines
 import { twMerge } from 'tailwind-merge'; // Utility for merging Tailwind CSS classes
-
 import Image from '~/components/common/Image.astro'; // Asset component for displaying images
 import Button from '../ui/Button.astro'; // Button component
+// import Swiper bundle with all modules installed
+
+// import styles bundle
+import 'swiper/css/bundle';
 
 // Destructuring props with default values and slot content
 const {
+  caseStudies = [],
   title = await Astro.slots.render('title'), // Title of the widget
   subtitle = await Astro.slots.render('subtitle'), // Subtitle of the widget
   tagline = await Astro.slots.render('tagline'), // Tagline of the widget
-
-  columns = 2, // Number of columns in the grid layout (default: 2)
-  mainTitle, // Main title displayed in the widget
-  description, // Description text displayed in the widget
-  numbersItem = [], // Array of number items to display
-  callToAction, // Call to action button or buttons
-  image = await Astro.slots.render('image'), // Image displayed in the widget
 
   id, // Unique identifier for the widget
   isDark = false, // Dark mode flag (default: false)
@@ -31,62 +28,90 @@ const {
 <WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
   <Headline title={title} subtitle={subtitle} tagline={tagline} classes={classes?.headline as Record<string, string>} />
 
-  <div class="slick-wrapper">
-    <div
-      class="gap-4 md:gap-6 rounded-lg shadow-[0_4px_30px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur border border-[#ffffff29] bg-white dark:bg-[#8bdc180a] p-6"
-    >
-      <div class={twMerge(`grid gap-8 gap-x-12 sm:gap-y-8 items-center ${columns === 2 ? 'sm:grid-cols-2 ' : ''}`)}>
-        <div class="max-h-96 overflow-hidden">
-          {
-            image && (
-              <Image
-                class="mx-auto rounded-md w-full object-center-important"
-                widths={[400, 768, 1024, 2040]}
-                sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
-                loading="eager"
-                width={600}
-                height={600}
-                {...image}
-              />
-            )
-          }
-        </div>
-        <div class={twMerge('relative flex flex-col p-10')}>
-          <h3 class={twMerge('text-4xl font-bold')}>{mainTitle}</h3>
-          {description && <p class={twMerge('text-muted mt-4')} set:html={description} />}
-
-          <div class="mt-6 flex gap-4">
-            {
-              // Rendering number items with title and description
-              numbersItem.map(({ title, description }) => (
-                <div class={twMerge('relative flex flex-col ')}>
-                  <div class={twMerge('text-3xl font-bold text-primary dark:text-white')}>{title}</div>
-                  {description && <p class={twMerge('text-muted mt-2')} set:html={description} />}
+  <div
+    class="gap-4 md:gap-6 rounded-lg shadow-[0_4px_30px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur border border-[#ffffff29] bg-white dark:bg-[#8bdc180a] p-6"
+  >
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        {
+          caseStudies.map((study, index) => (
+            <div key={index} class="swiper-slide">
+              <div class={twMerge(`grid grid-cols-2 gap-8 gap-x-12 sm:gap-y-8 items-center  } `)}>
+                <div class="max-h-96 overflow-hidden">
+                  {study.image && (
+                    <Image
+                      class="mx-auto rounded-md w-full object-center-important"
+                      widths={[400, 768, 1024, 2040]}
+                      sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+                      loading="eager"
+                      width={600}
+                      height={600}
+                      {...study.image}
+                    />
+                  )}
                 </div>
-              ))
-            }
-          </div>
+                <div class={twMerge('relative flex flex-col p-10')}>
+                  <h3 class={twMerge('text-4xl font-bold')}>{study.mainTitle}</h3>
+                  {study.description && <p class={twMerge('text-muted mt-4')} set:html={study.description} />}
 
-          {
-            // Rendering call to action button(s)
-            callToAction && (
-              <div class="mt-4">
-                {Array.isArray(callToAction) ? (
-                  // If callToAction is an array, render multiple buttons
-                  callToAction.map((action) => (
-                    <div class="flex w-full sm:w-auto">
-                      <Button {...(action || {})} />
+                  <div class="mt-6 flex gap-4">
+                    {study.numbersItem.map(({ title, description }, idx) => (
+                      <div key={idx} class={twMerge('relative flex flex-col ')}>
+                        <div class={twMerge('text-3xl font-bold text-primary dark:text-white')}>{title}</div>
+                        {description && <p class={twMerge('text-muted mt-2')} set:html={description} />}
+                      </div>
+                    ))}
+                  </div>
+
+                  {study.callToAction && (
+                    <div class="mt-4">
+                      {Array.isArray(study.callToAction) ? (
+                        study.callToAction.map((action, idx) => (
+                          <div key={idx} class="flex w-full sm:w-auto">
+                            <Button {...(action || {})} />
+                          </div>
+                        ))
+                      ) : (
+                        <div set:html={study.callToAction} />
+                      )}
                     </div>
-                  ))
-                ) : (
-                  // Otherwise, render a single button or HTML fragment
-                  <div set:html={callToAction} />
-                )}
+                  )}
+                </div>
               </div>
-            )
-          }
-        </div>
+            </div>
+          ))
+        }
       </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-pagination"></div>
     </div>
   </div>
+
+  <script>
+    import Swiper from 'swiper/bundle';
+    import { Keyboard, Navigation, Pagination } from 'swiper/modules';
+    const swiper = new Swiper('.swiper', {
+      speed: 500,
+
+      effect: 'fade',
+      grabCursor: true,
+      modules: [Keyboard, Navigation, Pagination],
+
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      keyboard: {
+        enabled: true,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  </script>
 </WidgetWrapper>
+
+<!-- 
+gap-4 md:gap-6 rounded-lg shadow-[0_4px_30px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur border border-[#ffffff29] bg-white dark:bg-[#8bdc180a] p-6 -->

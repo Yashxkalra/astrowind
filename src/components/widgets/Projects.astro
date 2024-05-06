@@ -4,6 +4,7 @@ import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import type { Projects } from '~/types';
 import Button from '../ui/Button.astro';
 import { getProjectPermalink } from '~/utils/permalinks';
+import { findLatestPosts } from '~/utils/blog';
 import type { Widget } from '~/types';
 import { APP_PROJECTS } from 'astrowind:config';
 
@@ -14,7 +15,7 @@ export interface Props extends Widget {
   information?: string;
   count?: number;
 }
-console.log(APP_PROJECTS.list);
+
 const {
   title = await Astro.slots.render('title'),
   linkText = 'View all posts',
@@ -27,27 +28,26 @@ const {
   classes = {},
   bg = await Astro.slots.render('bg'),
 } = Astro.props;
+const projects = APP_PROJECTS.isEnabled ? await findLatestPosts({ count }) : [];
 ---
 
-<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
-  <div class="flex flex-col lg:justify-between lg:flex-row mb-8">
-    {
-      title && (
-        <div class="md:max-w-sm">
-          <h2
-            class="text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none group font-heading mb-2"
-            set:html={title}
-          />
-          {/* {APP_PROJECTS?.list.isEnabled && linkText && linkUrl && (
-            <Button variant="link" href={linkUrl}>
-              {' '}
-              {linkText} »
-            </Button>
-          )} */}
-        </div>
-      )
-    }
+{
+  APP_PROJECTS.isEnabled ? (
+    <WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+      <div class="flex flex-col lg:justify-between lg:flex-row mb-8">
+        {title && (
+          <div class="md:max-w-sm">
+            <h2
+              class="text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none group font-heading mb-2"
+              set:html={title}
+            />
+          </div>
+        )}
 
-    {information && <p class="text-muted dark:text-slate-400 lg:text-sm lg:max-w-md" set:html={information} />}
-  </div>
-</WidgetWrapper>
+        {information && <p class="text-muted dark:text-slate-400 lg:text-sm lg:max-w-md" set:html={information} />}
+      </div>
+    </WidgetWrapper>
+  ) : (
+    <Fragment />
+  )
+}
