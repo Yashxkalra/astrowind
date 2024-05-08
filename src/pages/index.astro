@@ -217,13 +217,26 @@ const metadata = {
                 `}
   />
 
-  <!-- <Projects
+  <Projects
     title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
+    information=`The blog is used to display AstroWind documentation.
                         Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
                         Astro is a very interesting technology. Thanks.
-                `}
-  /> -->
+                `
+    projectInfo={[
+      {
+        image: {
+          src: '~/assets/images/glc-website.png',
+          alt: 'Project Image created by sillyweb',
+        },
+        title: 'GLC Builders Reimagined',
+        description:
+          'Facing the challenges of a competitive market, BLC Builders joined forces with sillyweb to undergo a complete website overhaul, focusing on elevating user experience and showcasing their construction expertise.',
+        date: 'June 22, 2023',
+        tags: ['graphic-design', 'business-card'],
+      },
+    ]}
+  />
 
   <!-- Testimonials Widget *********** -->
 

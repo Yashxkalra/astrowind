@@ -1,6 +1,7 @@
 ---
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 
+import Image from 'astro/components/Image.astro';
 import type { Projects } from '~/types';
 import Button from '../ui/Button.astro';
 import { getProjectPermalink } from '~/utils/permalinks';
@@ -8,46 +9,76 @@ import { findLatestPosts } from '~/utils/blog';
 import type { Widget } from '~/types';
 import { APP_PROJECTS } from 'astrowind:config';
 
-export interface Props extends Widget {
-  title?: string;
-  linkText?: string;
-  linkUrl?: string | URL;
-  information?: string;
-  count?: number;
-}
-
+// export interface Props extends Widget {
+//   title?: string;
+//   linkText?: string;
+//   linkUrl?: string | URL;
+//   information?: string;
+//   count?: number;
+// }
+const imageSrc = '~/assets/images/glc-website.png';
 const {
   title = await Astro.slots.render('title'),
   linkText = 'View all posts',
   linkUrl = getProjectPermalink(),
   information = await Astro.slots.render('information'),
   count = 4,
-
+  projectInfo = [],
   id,
   isDark = false,
   classes = {},
   bg = await Astro.slots.render('bg'),
 } = Astro.props;
-const projects = APP_PROJECTS.isEnabled ? await findLatestPosts({ count }) : [];
+// const projects = APP_PROJECTS.isEnabled ? await findLatestPosts({ count }) : [];
 ---
 
-{
-  APP_PROJECTS.isEnabled ? (
-    <WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
-      <div class="flex flex-col lg:justify-between lg:flex-row mb-8">
-        {title && (
-          <div class="md:max-w-sm">
-            <h2
-              class="text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none group font-heading mb-2"
-              set:html={title}
-            />
-          </div>
-        )}
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+  <div class="flex flex-col lg:justify-between lg:flex-row mb-8">
+    {
+      title && (
+        <div class="md:max-w-sm">
+          <h2
+            class="text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none group font-heading mb-2"
+            set:html={title}
+          />
+        </div>
+      )
+    }
 
-        {information && <p class="text-muted dark:text-slate-400 lg:text-sm lg:max-w-md" set:html={information} />}
-      </div>
-    </WidgetWrapper>
-  ) : (
-    <Fragment />
-  )
-}
+    {information && <p class="text-muted dark:text-slate-400 lg:text-sm lg:max-w-md" set:html={information} />}
+  </div>
+
+  {
+    projectInfo.map((project, index) => (
+      <article class="mb-6 transition" key={index}>
+        <div class="grid gap-6 row-gap-5 md:grid-cols-2 lg:grid-cols-3 -mb-6">
+          <div class="overflow-hidden max-w-lg w-full">
+            <a href="#">
+              {project.image && (
+                <Image
+                  class="mx-auto rounded-md w-full object-center-important"
+                  widths={[400, 900]}
+                  width={400}
+                  sizes="(max-width: 900px) 400px, 900px"
+                  aspectRatio="16:9"
+                  layout="cover"
+                  {...project.image}
+                />
+              )}
+            </a>
+
+            <div class="py-5">
+              <span class="text-gray-600">{project.date}</span>
+              <h3 class="mb-2 text-xl font-bold leading-tight sm:text-2xl font-heading">
+                <a href="" class="hover:text-primary dark:hover:text-primary transition ease-in duration-200">
+                  {project.title}
+                </a>
+              </h3>
+              <p class="text-muted dark:text-slate-400 text-lg">{project.description}</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    ))
+  }
+</WidgetWrapper>
