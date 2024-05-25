@@ -1,34 +1,43 @@
 ---
+import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
+
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 
-import Image from 'astro/components/Image.astro';
-import type { Projects } from '~/types';
-import Button from '../ui/Button.astro';
-import { getProjectPermalink } from '~/utils/permalinks';
-import { findLatestPosts } from '~/utils/blog';
-import type { Widget } from '~/types';
-import { APP_PROJECTS } from 'astrowind:config';
+import { ProjectListRobots, getStaticPathsProjectList } from '~/utils/getProjectData';
 
-// export interface Props extends Widget {
-//   title?: string;
-//   linkText?: string;
-//   linkUrl?: string | URL;
-//   information?: string;
-//   count?: number;
-// }
-const imageSrc = '~/assets/images/glc-website.png';
+export const prerender = true;
+
+export const getStaticPaths = (async ({ paginate }) => {
+  return await getStaticPathsProjectList({ paginate });
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { page } = Astro.props as Props;
+
+// const metadata = {
+//   title: `Blog${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
+//   robots: {
+//     index: ProjectListRobots?.index && currentPage === 1,
+//     follow: ProjectListRobots?.follow,
+//   },
+//   openGraph: {
+//     type: 'projects',
+//   },
+// };
+
 const {
   title = await Astro.slots.render('title'),
-  linkText = 'View all posts',
-  linkUrl = getProjectPermalink(),
+
   information = await Astro.slots.render('information'),
-  count = 4,
+
   projectInfo = [],
   id,
   isDark = false,
   classes = {},
   bg = await Astro.slots.render('bg'),
 } = Astro.props;
+
 // const projects = APP_PROJECTS.isEnabled ? await findLatestPosts({ count }) : [];
 ---
 
@@ -50,11 +59,11 @@ const {
 
   {
     projectInfo.map((project, index) => (
-      <article class="mb-6 transition" key={index}>
+      <div class="mb-6 transition" key={index}>
         <div class="grid gap-6 row-gap-5 md:grid-cols-2 lg:grid-cols-3 -mb-6">
           <div class="overflow-hidden max-w-lg w-full">
             <a href="#">
-              {project.image && (
+              {/* {project.image && (
                 <Image
                   class="mx-auto rounded-md w-full object-center-important"
                   widths={[400, 900]}
@@ -64,7 +73,7 @@ const {
                   layout="cover"
                   {...project.image}
                 />
-              )}
+              )} */}
             </a>
 
             <div class="py-5">
@@ -78,7 +87,7 @@ const {
             </div>
           </div>
         </div>
-      </article>
+      </div>
     ))
   }
 </WidgetWrapper>

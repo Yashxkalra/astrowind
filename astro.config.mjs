@@ -27,6 +27,9 @@ const whenExternalScripts = (items = []) =>
 export default defineConfig({
   output: 'static',
 
+  devToolbar: {
+    enabled: true,
+  },
   integrations: [
     tailwind({
       applyBaseStyles: false,
@@ -74,6 +77,7 @@ export default defineConfig({
       config: './src/config.yaml',
     }),
   ],
+  routes: [],
 
   image: {
     service: squooshImageService(),
@@ -88,7 +92,7 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        '~': path.resolve(__dirname, './src'),
+        '~': `${__dirname}/src`,
       },
     },
   },

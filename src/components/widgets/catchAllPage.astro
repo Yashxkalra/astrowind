@@ -1,0 +1,13 @@
+---
+import { Astro } from 'astro';
+const { slug } = Astro.request.params;
+const { fetchContent } = Astro.imports;
+---
+
+<title>{fetchContent(`../content/Projects/${slug}.mdx`).props.frontmatter.title}</title>
+
+<main>
+  <article>
+    <h1>{fetchContent(`../content/Projects/${slug}.mdx`).props.content}</h1>
+  </article>
+</main>

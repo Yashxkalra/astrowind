@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import os from 'node:os';
 
-import configBuilder from "./utils/configBuilder"
+import configBuilder from './utils/configBuilder';
 import loadConfig from './utils/loadConfig';
 
 const tasksIntegration = ({ config: _themeConfig = 'src/config.yaml' } = {}) => {
@@ -17,16 +17,15 @@ const tasksIntegration = ({ config: _themeConfig = 'src/config.yaml' } = {}) => 
         // isRestart,
         logger,
         updateConfig,
-        addWatchFile
+        addWatchFile,
       }) => {
-
-        const buildLogger = logger.fork("astrowind");
+        const buildLogger = logger.fork('astrowind');
 
         const virtualModuleId = 'astrowind:config';
         const resolvedVirtualModuleId = '\0' + virtualModuleId;
 
         const rawJsonConfig = await loadConfig(_themeConfig);
-        const { SITE, I18N, METADATA, APP_BLOG, UI, ANALYTICS } = configBuilder(rawJsonConfig);
+        const { SITE, I18N, METADATA, APP_BLOG, APP_PROJECT, UI, ANALYTICS } = configBuilder(rawJsonConfig);
 
         updateConfig({
           site: SITE.site,
@@ -50,6 +49,7 @@ const tasksIntegration = ({ config: _themeConfig = 'src/config.yaml' } = {}) => 
                     export const I18N = ${JSON.stringify(I18N)};
                     export const METADATA = ${JSON.stringify(METADATA)};
                     export const APP_BLOG = ${JSON.stringify(APP_BLOG)};
+                    export const APP_PROJECT = ${JSON.stringify(APP_PROJECT)}; 
                     export const UI = ${JSON.stringify(UI)};
                     export const ANALYTICS = ${JSON.stringify(ANALYTICS)};
                     `;
@@ -60,12 +60,12 @@ const tasksIntegration = ({ config: _themeConfig = 'src/config.yaml' } = {}) => 
           },
         });
 
-        if (typeof _themeConfig === "string") {
+        if (typeof _themeConfig === 'string') {
           addWatchFile(new URL(_themeConfig, config.root));
 
-          buildLogger.info(`Astrowind \`${_themeConfig}\` has been loaded.`)
+          buildLogger.info(`Astrowind \`${_themeConfig}\` has been loaded.`);
         } else {
-          buildLogger.info(`Astrowind config has been loaded.`)
+          buildLogger.info(`Astrowind config has been loaded.`);
         }
       },
       'astro:config:done': async ({ config }) => {
@@ -73,9 +73,8 @@ const tasksIntegration = ({ config: _themeConfig = 'src/config.yaml' } = {}) => 
       },
 
       'astro:build:done': async ({ logger }) => {
-
-        const buildLogger = logger.fork("astrowind");
-        buildLogger.info("Updating `robots.txt` with `sitemap-index.xml` ...")
+        const buildLogger = logger.fork('astrowind');
+        buildLogger.info('Updating `robots.txt` with `sitemap-index.xml` ...');
 
         try {
           const outDir = cfg.outDir;

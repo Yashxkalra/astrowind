@@ -1,0 +1,13 @@
+---
+const { frontmatter, children } = Astro.props;
+---
+
+<article>
+  <header>
+    <h1>{frontmatter.title}</h1>
+    <p>{frontmatter.excerpt}</p>
+  </header>
+  <main>
+    {children}
+  </main>
+</article>

@@ -1,4 +1,4 @@
-import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
+import { getPermalink, getBlogPermalink, getAsset, getProjectPermalink } from './utils/permalinks';
 
 export const headerData = {
   links: [
@@ -107,6 +107,31 @@ export const headerData = {
         {
           text: 'Tag Page',
           href: getPermalink('astro', 'tag'),
+        },
+      ],
+    },
+    {
+      text: 'Project',
+      links: [
+        {
+          text: 'Project List',
+          href: getProjectPermalink(),
+        },
+        {
+          text: 'Article',
+          href: getPermalink('Ebook-cover-for-iphone-for-seniors-simplified', 'project_post'),
+        },
+        {
+          text: 'Article (with MDX)',
+          href: getPermalink('markdown-elements-demo-post', 'project_post'),
+        },
+        {
+          text: 'Category Page',
+          href: getPermalink('tutorials', 'project_category'),
+        },
+        {
+          text: 'Tag Page',
+          href: getPermalink('astro', 'project_tag'),
         },
       ],
     },
