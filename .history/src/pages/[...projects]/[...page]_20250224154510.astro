@@ -1,0 +1,49 @@
+---
+import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
+
+import Layout from '~/layouts/PageLayout.astro';
+import ProjectList from '~/components/project/ProjectList.astro';
+import Headline from '~/components/blog/Headline.astro';
+import Pagination from '~/components/blog/Pagination.astro';
+
+import { ProjectListRobots, getStaticPathsProjectList } from '~/utils/getProjectData.ts';
+
+export const prerender = true;
+
+export const getStaticPaths = (async ({ paginate }) => {
+  return await getStaticPathsProjectList({ paginate });
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { page } = Astro.props as Props;
+export const isProjectListRouteEnabled = getStaticPaths;
+const currentPage = page.currentPage ?? 1;
+
+const metadata = {
+  title: `pProjects${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
+  robots: {
+    index: ProjectListRobots?.index && currentPage === 1,
+    follow: ProjectListRobots?.follow,
+  },
+  openGraph: {
+    type: 'projects',
+  },
+};
+
+//very important stuff for finding props
+// <pre>{JSON.stringify(projects, null, 2)}</pre>
+---
+
+<Layout metadata={metadata}>
+  <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto w-full">
+    <Headline
+      subtitle="A statically generated blog example with news, tutorials, resources and other interesting content related to AstroWind"
+    >
+      The Projects
+    </Headline>
+
+    <ProjectList projects={page.data} />
+    <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+  </section>
+</Layout>
