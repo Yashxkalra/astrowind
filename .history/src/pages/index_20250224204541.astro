@@ -19,7 +19,6 @@ import ProjectLatestPosts from '~/components/widgets/ProjectLatestPosts.astro';
 import Hero3 from '~/components/widgets/Hero3.astro';
 import Services from '~/components/widgets/Services.astro';
 import AboutAuthor from '~/components/widgets/AboutAuthor.astro';
-import TestimonialSection from '~/components/widgets/TestimonialSection.astro';
 
 const metadata = {
   title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
@@ -120,20 +119,10 @@ const metadata = {
       { title: 'Users', amount: '48.4K' },
     ]}
   />
-
-  <TestimonialSection
-    testimonial=`I have finally found a guy that I believe i’ll be Working with for the rest of my career because he’s that good! `
-    authorName="Jassy Khanna"
-    authorJob="Manager at Khanna company."
-    image={{
-      src: '~/assets/images/Testimonial-preview.png',
-      alt: 'Testimonial Photo',
-    }}
-  />
-
   <!-- Features2 Widget ************** -->
 
-  <Features2
+  <Test
+    <Test
     title="Benefits of choosing my services "
     subtitle="I provide the best service to all our customers "
     tagline="QUALITY AND AFFORDABLE"
@@ -196,7 +185,7 @@ const metadata = {
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
-  </Features2>
+  </Test>
 
   <!-- Content Widget **************** -->
 

@@ -1,0 +1,53 @@
+---
+import Headline from '~/components/ui/Headline.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Button from '~/components/ui/Button.astro';
+import Image from '~/components/common/Image.astro';
+import type { Testimonials as Props } from '~/types';
+
+const {
+  testimonial = await Astro.slots.render('testimonial'),
+  authorName = await Astro.slots.render('authorName'),
+  authorJob = await Astro.slots.render('authorJob'),
+  image = await Astro.slots.render('image'), // TODO: find HTMLElementProps
+
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+---
+
+<div class="flex h-auto flex-row">
+  <div class="flex flex-row p-4 md:p-6 rounded-md shadow-xl dark:shadow-none dark:border dark:border-slate-600">
+    {testimonial && <h2 class="text-[3rem] font-medium leading-6 pb-4">{testimonial}</h2>}
+
+    <hr class="border-slate-200 dark:border-slate-600 my-4" />
+
+    <div class="flex flex-col">
+      {
+        image && (
+          <div class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600">
+            {typeof image === 'string' ? (
+              <Fragment set:html={image} />
+            ) : (
+              <Image
+                class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600 min-w-full min-h-full"
+                width={40}
+                height={40}
+                widths={[400, 768]}
+                layout="fixed"
+                {...(image as any)}
+              />
+            )}
+          </div>
+        )
+      }
+
+      <div class="grow ml-3 rtl:ml-0 rtl:mr-3">
+        {authorName && <p class="text-base font-semibold">{authorName}</p>}
+        {authorJob && <p class="text-xs text-muted">{authorJob}</p>}
+      </div>
+    </div>
+  </div>
+</div>
