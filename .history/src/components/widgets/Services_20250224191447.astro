@@ -1,0 +1,25 @@
+---
+import Image from '~/components/common/Image.astro';
+import type { CallToAction } from '~/types';
+import Button from '~/components/ui/Button.astro';
+import ServicesCard from '~/components/widgets/ServicesCard.astro';
+
+export interface Props {
+  title?: string;
+
+  image?: string | any;
+}
+
+const {
+  title = Astro.slots.has('title') ? Astro.slots.render('title') : null,
+
+  items = [],
+} = Astro.props;
+---
+
+<section class="mb-6 transition">
+  <div class="relative md:h-64 bg-gray-400 dark:bg-slate-700 rounded shadow-lg mb-6">
+    <h2>{title}</h2>
+    <ServicesCard items={items} />
+  </div>
+</section>

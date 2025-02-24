@@ -1,0 +1,27 @@
+---
+import ServicesCard from './ServicesCard.astro';
+import { Debug } from 'astro:components';
+
+export interface Props {
+  title?: string;
+  items?: Array<{
+    src: string;
+    image: {
+      src: string;
+      alt: string;
+    };
+    title: string;
+  }>;
+}
+
+const { title = 'Default Title', items = [] } = Astro.props;
+---
+
+<section class="mb-6 transition">
+  <div class="bg-gray-400 dark:bg-slate-700 rounded shadow-lg">
+    <h2>{title}</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {items.map((item, index) => <ServicesCard key={index} item={item} />)}
+    </div>
+  </div>
+</section>

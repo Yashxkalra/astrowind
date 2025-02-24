@@ -1,0 +1,37 @@
+---
+import Image from '~/components/common/Image.astro';
+import type { CallToAction } from '~/types';
+
+export interface Props {
+  title?: string;
+}
+
+const {
+  title = Astro.slots.has('title') ? Astro.slots.render('title') : null,
+
+  items = [],
+} = Astro.props;
+---
+
+<div class="relative h-3rem bg-white dark:bg-slate-700 rounded shadow-lg mb-6">
+  <!-- <Debug {items} /> -->
+  {
+    items.map((item, index) => {
+      <a href={item.src}>
+        <Image
+          src={item.image.src}
+          class="w-full md:h-full rounded shadow-lg bg-gray-400 dark:bg-slate-700"
+          widths={[400, 900]}
+          width={400}
+          sizes="(max-width: 900px) 400px, 900px"
+          alt={item.image.alt}
+          aspectRatio="16:9"
+          layout="cover"
+          loading="lazy"
+          decoding="async"
+        />
+        <h3 class="mb-2 text-xl font-bold leading-tight sm:text-2xl font-heading">{items.title}</h3>
+      </a>;
+    })
+  }
+</div>

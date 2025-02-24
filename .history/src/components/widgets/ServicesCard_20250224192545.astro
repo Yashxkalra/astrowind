@@ -1,0 +1,35 @@
+---
+import Image from '~/components/common/Image.astro';
+import { Debug } from 'astro:components';
+
+export interface Props {
+  item: {
+    src: string;
+    image: {
+      src: string;
+      alt: string;
+    };
+    title: string;
+  };
+}
+
+const { item } = Astro.props;
+---
+
+<div class="relative h-6rem bg-white dark:bg-slate-700">
+  <a href={item.src}>
+    <Image
+      src={item.image.src}
+      class="w-full md:h-full rounded shadow-lg bg-gray-400 dark:bg-slate-700"
+      widths={[400, 900]}
+      width={400}
+      sizes="(max-width: 900px) 400px, 900px"
+      alt={item.image.alt}
+      aspectRatio="16:9"
+      layout="cover"
+      loading="lazy"
+      decoding="async"
+    />
+    <h3 class="mb-2 text-xl font-bold leading-tight sm:text-2xl font-heading">{item.title}</h3>
+  </a>
+</div>

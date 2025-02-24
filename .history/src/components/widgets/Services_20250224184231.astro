@@ -1,0 +1,25 @@
+---
+import Image from '~/components/common/Image.astro';
+import type { CallToAction } from '~/types';
+import Button from '~/components/ui/Button.astro';
+import { Debug } from 'astro:components';
+
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  tagline?: string;
+  content?: string;
+  actions?: string | CallToAction[];
+  image?: string | any; // TODO: find HTMLElementProps
+}
+
+const {
+  title = Astro.slots.has('title') ? Astro.slots.render('title') : null,
+  subtitle = Astro.slots.has('subtitle') ? Astro.slots.render('subtitle') : null,
+  tagline,
+  content = Astro.slots.has('content') ? Astro.slots.render('content') : null,
+  actions = Astro.slots.has('actions') ? Astro.slots.render('actions') : null,
+  image = Astro.slots.has('image') ? Astro.slots.render('image') : null,
+  imageArray = [],
+} = Astro.props;
+---

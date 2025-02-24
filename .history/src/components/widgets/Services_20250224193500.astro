@@ -1,0 +1,27 @@
+---
+import ServicesCard from './ServicesCard.astro';
+import { Debug } from 'astro:components';
+
+export interface Props {
+  title?: string;
+  items?: Array<{
+    src: string;
+    image: {
+      src: string;
+      alt: string;
+    };
+    title: string;
+  }>;
+}
+
+const { title = 'Default Title', items = [] } = Astro.props;
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+  <div class="bg-gray-400 dark:bg-slate-700 p-12">
+    <h2>{title}</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {items.map((item, index) => <ServicesCard key={index} item={item} />)}
+    </div>
+  </div>
+</WidgetWrapper>

@@ -1,6 +1,8 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 
+import Hero2 from '~/components/widgets/Hero2.astro';
+
 import Features2 from '~/components/widgets/Features2.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Content from '~/components/widgets/Content.astro';
@@ -17,8 +19,7 @@ import ComparisonChart from '~/components/widgets/ComparisonChart.astro';
 import Projects from '~/components/widgets/Projects.astro';
 import ProjectLatestPosts from '~/components/widgets/ProjectLatestPosts.astro';
 import Hero3 from '~/components/widgets/Hero3.astro';
-import Services from '~/components/widgets/Services.astro';
-import AboutAuthor from '~/components/widgets/AboutAuthor.astro';
+import Services from './services.astro';
 
 const metadata = {
   title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
@@ -64,52 +65,18 @@ const metadata = {
     </Fragment>
   </Hero3>
 
-  <Services
-    title="Design for what you need "
-    items={[
-      {
-        title: 'Book Cover Design',
-        src: '/book-cover',
-        image: {
-          src: '~/assets/images/ServicesHomepage/book-cover-preview.png',
-          alt: 'Book Cover Design',
+  <Services title="Benefits of choosing my services " subtitle="I provide the best service to all our customers ">
+    items={
+      [
+        {
+          title: 'User-Experience Focused',
+          description:
+            'Your design will be easy enough to customize that anyone can pick it up to make a change big or small, from text changes to adding new pages.',
+          icon: 'flat-color-icons:template',
         },
-      },
-      {
-        title: 'Website & Landing Pages',
-        src: '/web-design',
-        image: {
-          src: '~/assets/images/ServicesHomepage/Wine-Website-preview.png',
-          alt: 'Website & Landing Page',
-        },
-      },
-      {
-        title: 'Business & advertising',
-        src: '/ads-design',
-        image: {
-          src: '~/assets/images/ServicesHomepage/AdvertisingPreview.png',
-          alt: 'Business & advertising',
-        },
-      },
-      {
-        title: 'Social Media Design',
-        src: '/social-media',
-        image: {
-          src: '~/assets/images/ServicesHomepage/Social-Media-Preview.png',
-          alt: 'Social Media Ads and banners',
-        },
-      },
-    ]}
-  />
-
-  <AboutAuthor
-    title="Hi 👋, my name is Yash Singh the founder and Lead designer of Sillyweb "
-    subtitle="Logos, websites, packaging design and more. Our trusted designer community has helped thousands of businesses launch, grow, expand and rebrand with custom, professional design."
-    image={{
-      src: '~/assets/images/Founder Photo.png',
-      alt: 'Founder "Yash Singh" Photo',
-    }}
-  />
+      ]
+    }
+  </Services>
   <Stats
     stats={[
       { title: 'Downloads', amount: '132K' },
