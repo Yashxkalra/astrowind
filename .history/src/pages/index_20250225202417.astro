@@ -1,0 +1,539 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Features2 from '~/components/widgets/Features2.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Content from '~/components/widgets/Content.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+
+import FAQs from '~/components/widgets/FAQs.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+import CaseStudies from '~/components/widgets/CaseStudies.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+
+import ComparisonChart from '~/components/widgets/ComparisonChart.astro';
+import Projects from '~/components/widgets/Projects.astro';
+import ProjectLatestPosts from '~/components/widgets/ProjectLatestPosts.astro';
+import Hero3 from '~/components/widgets/Hero3.astro';
+import Services from '~/components/widgets/Services.astro';
+import AboutAuthor from '~/components/widgets/AboutAuthor.astro';
+import TestimonialSection from '~/components/widgets/TestimonialSection.astro';
+import CallToActionRect from '~/components/widgets/CallToActionRect.astro';
+
+const metadata = {
+  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero3
+    tagline="SaaS Web Demo"
+    actions={[
+      { variant: 'primary', target: '_blank', text: 'Get Started', href: 'https://github.com/onwidget/astrowind' },
+      { text: 'Learn more', href: '#features' },
+    ]}
+    imageArray={[
+      {
+        image: {
+          src: '~/assets/images/glc-website.png',
+          alt: 'Case study image',
+        },
+      },
+      {
+        image: {
+          src: '~/assets/images/Butterfly-website.png',
+          alt: 'Case study image',
+        },
+      },
+      // Add more images as needed
+    ]}
+  >
+    <Fragment slot="title">
+      Stand Out with Stunning Designs That
+
+      <span class="text-[--aw-color-primary] dark:text-accent highlight">Convert</span>
+      <br />
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="hidden sm:inline"> </span>
+      I specialize in <spanFrom class="font-semibold">creating stunning</spanFrom>
+    </Fragment>
+
+    <Services
+      title="Get Designs That Fit Your Needs "
+      items={[
+        {
+          title: 'Book Cover Design',
+          src: '/book-cover',
+          image: {
+            src: '~/assets/images/ServicesHomepage/book-cover-preview.png',
+            alt: 'Book Cover Design',
+          },
+        },
+        {
+          title: 'Website & Landing Page Design',
+          src: '/web-design',
+          image: {
+            src: '~/assets/images/ServicesHomepage/Wine-Website-preview.png',
+            alt: 'Website & Landing Page',
+          },
+        },
+        {
+          title: 'Business & Advertising Graphics',
+          src: '/ads-design',
+          image: {
+            src: '~/assets/images/ServicesHomepage/AdvertisingPreview.png',
+            alt: 'Business & advertising',
+          },
+        },
+        {
+          title: 'Social Media Ads & Banners',
+          src: '/social-media',
+          image: {
+            src: '~/assets/images/ServicesHomepage/Social-Media-Preview.png',
+            alt: 'Social Media Ads and banners',
+          },
+        },
+      ]}
+    />
+
+    <AboutAuthor
+      title="Hi 👋, my name is Yash Singh the founder and Lead designer of Sillyweb "
+      subtitle="Logos, websites, packaging design and more. Our trusted designer community has helped thousands of businesses launch, grow, expand and rebrand with custom, professional design."
+      image={{
+        src: '~/assets/images/Founder Photo.png',
+        alt: 'Founder "Yash Singh" Photo',
+      }}
+    />
+
+    <TestimonialSection
+      authorName="Jassy Khanna"
+      authorJob="Manager at Khanna company."
+      image={{
+        src: '~/assets/images/Testimonial-preview.png',
+        alt: 'Testimonial Photo',
+      }}
+      ><Fragment slot="testimonial">
+        I have finally found a guy that I believe i’ll be Working with for the rest of my career because <span
+          class="font-semibold text-[--aw-color-primary]"
+        >
+          he’s that good!
+        </span>
+      </Fragment></TestimonialSection
+    >
+
+    <!-- <Stats
+    stats={[
+      { title: 'Downloads', amount: '132K' },
+      { title: 'Stars', amount: '24.8K' },
+      { title: 'Forks', amount: '10.3K' },
+      { title: 'Users', amount: '48.4K' },
+    ]}
+  /> -->
+    <ProjectLatestPosts title="My Recent Work" />
+
+    <CallToActionRect
+      actions={[
+        {
+          variant: 'primary',
+          text: 'Get a Design',
+          href: 'https://github.com/onwidget/astrowind',
+          target: '_blank',
+          icon: 'tabler:arrow-right',
+        },
+      ]}
+    >
+      <!-- FAQs Widget ******************* -->
+
+      <Fragment slot="title">
+        <span class="sm:whitespace-nowrap">Ready to start your project?</span>
+      </Fragment>
+    </CallToActionRect>
+    <!-- Features2 Widget ************** -->
+
+    <Features2
+      title="Benefits of choosing my services "
+      subtitle="I provide the best service to all our customers "
+      tagline="QUALITY AND AFFORDABLE"
+      items={[
+        {
+          title: 'User-Experience Focused',
+          description:
+            'Your design will be easy enough to customize that anyone can pick it up to make a change big or small, from text changes to adding new pages.',
+          icon: 'flat-color-icons:template',
+        },
+        {
+          title: 'Conversion Optimized',
+          description:
+            'I know the little tricks that can push people to convert from a visitor to a customer. I help make your site pay for itself by optimizing the little details.',
+          icon: 'flat-color-icons:gallery',
+        },
+        {
+          title: 'Mobile Optimized',
+          description:
+            '52% of people are viewing websites on a phone. I know its more than just important so its standard that every page is responsive.',
+          icon: 'flat-color-icons:approval',
+        },
+        {
+          title: 'Easily Editable',
+          description:
+            'Your site will be easy enough to customize that anyone can pick it up to make a change big or small, from text changes to adding new pages.',
+          icon: 'flat-color-icons:document',
+        },
+        {
+          title: 'Search Engine Optimized',
+          description:
+            'Your site will follow the best SEO practices to begin its ranking including meta data, proper markup, sitemaps, image names, accessibility, and more!',
+          icon: 'flat-color-icons:advertising',
+        },
+        {
+          title: 'Beautifully Designed',
+          description:
+            'Your website won’t be from a cookie-cutter layout. It will be designed to beautifully fit the style of your brand from fonts, icons, colors, and more!',
+          icon: 'flat-color-icons:currency-exchange',
+        },
+        {
+          title: 'Speed Optimized',
+          description:
+            'Your site will be developed with speed optimization in mind and performance in mind. No site should be slow for its users losing out on customers.',
+          icon: 'flat-color-icons:business-contact',
+        },
+        {
+          title: 'Client-Loved',
+          description:
+            'With 5/5 stars on Google to prove it, my clients love their websites. Also a fast turn-around time, email support, and a smooth website build process.',
+          icon: 'flat-color-icons:business-contact',
+        },
+        {
+          title: 'Fully custom designs',
+          description: 'Tailored to your business needs, our designs are one-of-a-kind, just like your brand.',
+          icon: 'flat-color-icons:database',
+        },
+      ]}
+    >
+      <Fragment slot="bg">
+        <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+      </Fragment>
+    </Features2>
+
+    <!-- Content Widget **************** -->
+
+    <Content
+      isReversed
+      tagline="Why work with us"
+      title="Why I’m Your Design Hero that Makes you stands out"
+      items={[
+        {
+          title: 'Exceptional Design Quality',
+          description:
+            'I always deliver outstanding designs that captivate and inspire, driven by my commitment to excellence.',
+          icon: 'tabler:diamond',
+        },
+        {
+          title: 'Unmatched Creativity',
+          description:
+            'I always brings fresh and innovative ideas to every project, crafting unique designs that set my clients apart',
+          icon: 'tabler:wand',
+        },
+        {
+          title: 'Fast Turnaround Time',
+          description:
+            'I understand the importance of timely delivery, helping you meet deadlines and launch your materials promptly.',
+          icon: 'tabler:clock-24',
+        },
+        {
+          title: 'Client-Centric Approach',
+          description:
+            'I prioritize your needs, understanding your goals to tailor designs that align with your brand identity.',
+          icon: 'tabler:mood-heart',
+        },
+      ]}
+      image={{
+        src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+        alt: 'Colorful Image',
+      }}
+    >
+      <Fragment slot="content">
+        <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building a modern Website</h3>
+        Every business needs to be online. Stand out from the competition and make your brand look its best with stunning
+        web page design. With Sillyweb web design services, you'll get thoughtful, effective web page designs created by
+        professionals.
+      </Fragment>
+
+      <Fragment slot="bg">
+        <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+      </Fragment>
+    </Content>
+
+    <!-- Steps Widget ****************** -->
+    <!-- 
+  <Steps
+    title="Get your dream website up and running in no time with AstroWind."
+    items={[
+      {
+        title: 'Step 1: <span class="font-medium">Download</span>',
+        description:
+          "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
+        icon: 'tabler:package',
+      },
+      {
+        title: 'Step 2: <span class="font-medium">Add content</em>',
+        description:
+          "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
+        icon: 'tabler:letter-case',
+      },
+      {
+        title: 'Step 3: <span class="font-medium">Customize styles</span>',
+        description:
+          'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by AstroWind! Precision in design ensures a seamless user experience.',
+        icon: 'tabler:paint',
+      },
+      {
+        title: 'Ready!',
+        icon: 'tabler:check',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
+      alt: 'Steps image',
+    }}
+  /> -->
+
+    <!-- HighlightedPosts Widget ******* -->
+
+    <BlogLatestPosts
+      title="Find out more content in our Blog"
+      information={`The blog is used to display AstroWind documentation.
+                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
+                        Astro is a very interesting technology. Thanks.
+                `}
+    />
+
+    <!-- Testimonials Widget *********** -->
+
+    <Testimonials
+      title="Words from real customers"
+      testimonials={[
+        {
+          title: 'Sillyweb is best in Landing Pages',
+          testimonial: `The designs are not only visually appealing but also highly professional. The templates have saved me a significant amount of time while helping me make a lasting impression on my clients.`,
+          name: 'Emily Kennedy',
+          job: 'Front-end developer',
+          image: {
+            src: 'https://images.unsplash.com/photo-1618835962148-cf177563c6c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=930&q=80',
+            alt: 'Emily Kennedy Image',
+          },
+        },
+        {
+          title: 'Sillyweb is best in Landing Pages',
+          testimonial: `It beautifully showcases my work, with its clean and elegant design that lets my photographs shine. Customization was a breeze, even for a non-tech person like me. The result is a professional and immersive portfolio that's garnered numerous compliments.`,
+          name: 'Sarah Hansen',
+          job: 'Photographer',
+          image: {
+            src: 'https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+            alt: 'Sarah Hansen Image',
+          },
+        },
+        {
+          title: 'Sillyweb is best in Landing Pages',
+          testimonial: `I discovered these templates and I'm impressed by their variety and quality. They've helped me establish a consistent brand image across my marketing and social platforms, elevating my business's overall appearance.`,
+          name: 'Mark Wilkinson',
+          job: 'Small business owner',
+          image: {
+            src: 'https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=824&q=80',
+            alt: 'Mark Wilkinson Image',
+          },
+        },
+      ]}
+      callToAction={{
+        target: '_blank',
+        text: 'More testimonials...',
+        href: 'https://github.com/onwidget/astrowind',
+        icon: 'tabler:chevron-right',
+      }}
+    />
+    <!-- Case Studies Widget *********** -->
+    <CaseStudies
+      tagline="Case Studies"
+      title="I've generated my clients thousands since 2022"
+      subtitle="See how I helped my customers increased thier conversion rates. You could be next success story."
+      caseStudies={[
+        {
+          image: {
+            src: '~/assets/images/glc-website.png',
+            alt: 'case study image',
+          },
+          mainTitle: 'GLC Builders Reimagined',
+          description:
+            'Facing the challenges of a competitive market, BLC Builders joined forces with sillyweb to undergo a complete website overhaul, focusing on elevating user experience and showcasing their construction expertise.',
+          callToAction: [
+            {
+              variant: 'primary',
+              text: 'Redesign My Site',
+              href: '/services',
+            },
+          ],
+          numbersItem: [
+            {
+              title: '$177,911+',
+              description: 'Achieved an impressive $177,911+ increase in revenue within the 3 months',
+            },
+          ],
+        },
+        {
+          image: {
+            src: '~/assets/images/Butterfly-website.png',
+            alt: 'case study image',
+          },
+          mainTitle: 'GLC Builders Reimagined',
+          description:
+            'Facing the challenges of a competitive market, BLC Builders joined forces with sillyweb to undergo a complete website overhaul, focusing on elevating user experience and showcasing their construction expertise.',
+          callToAction: [
+            {
+              variant: 'primary',
+              text: 'Redesign My Site',
+              href: '/services',
+            },
+          ],
+          numbersItem: [
+            {
+              title: '$177,911+',
+              description: 'Achieved an impressive $177,911+ increase in revenue within the 3 months',
+            },
+          ],
+        },
+        // Add more case studies as needed
+      ]}
+    />
+
+    <!-- Comparison bar Widget *********** -->
+
+    <ComparisonChart
+      tagline="Our competitors"
+      title="How I am comparison to others"
+      benefits={[
+        'Low Financial Cost',
+        'Minimal Guesswork',
+        'Quick Results',
+        'Low Ongoing Costs',
+        'Easily Scalable',
+        '1-on-1 Service',
+        'Quick feedback',
+      ]}
+      providers={[
+        {
+          popular: true,
+          subtitle: '',
+          mainTitle: 'Sillyweb',
+          description: 'I offer affordable pricing and flexible plan to fit your budget.',
+          callToAction: [
+            {
+              variant: 'primary',
+              text: 'Redesign My Site',
+              href: '/services',
+            },
+          ],
+          values: ['tick', 'tick', 'tick', 'tick', 'tick', 'tick', 'tick'],
+        },
+        {
+          popular: false,
+          subtitle: '',
+          mainTitle: 'In-House Team',
+          description: 'Hiring in-house design team can be expensive, with costs for salaries, benefits, and overhead.',
+          callToAction: [
+            {
+              variant: 'primary',
+              text: 'Redesign My Site',
+              href: '/services',
+            },
+          ],
+          values: ['Sometimes', 'cross', 'sometimes', 'cross', 'cross', 'tick', 'cross'],
+        },
+        {
+          popular: false,
+          subtitle: '',
+          mainTitle: 'Standard Design Agencies',
+          description:
+            'Traditional design agencies typically have higher overhead costs, which can result in higher project fees.',
+          callToAction: [
+            {
+              variant: 'primary',
+              text: 'Redesign My Site',
+              href: '/services',
+            },
+          ],
+          values: ['Sometimes', 'cross', 'cross', 'cross', 'cross', 'tick', 'cross'],
+        },
+      ]}
+    />
+
+    <!-- CallToAction Widget *********** -->
+    <FAQs
+      title="Frequently Asked Questions"
+      subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
+      tagline="FAQs"
+      classes={{ container: 'max-w-6xl' }}
+      items={[
+        {
+          title: 'Why AstroWind?',
+          description:
+            "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
+        },
+        {
+          title: 'What do I need to start?',
+          description:
+            'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
+        },
+        {
+          title: 'How to install the Astro + Tailwind CSS template?',
+          description:
+            "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
+        },
+        {
+          title: "What's something that you don't understand?",
+          description:
+            "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
+        },
+        {
+          title: 'What is something that you would like to try again?',
+          description:
+            "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
+        },
+        {
+          title: 'If you could only ask one question to each person you meet, what would that question be?',
+          description:
+            "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
+        },
+      ]}
+    />
+
+    <CallToAction
+      actions={[
+        {
+          variant: 'primary',
+          text: 'Get template',
+          href: 'https://github.com/onwidget/astrowind',
+          target: '_blank',
+          icon: 'tabler:download',
+        },
+      ]}
+    >
+      <!-- FAQs Widget ******************* -->
+
+      <Fragment slot="title">
+        Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
+      </Fragment>
+
+      <Fragment slot="subtitle">
+        Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
+        waste more time! :P
+      </Fragment>
+    </CallToAction>
+  </Hero3>
+</Layout>

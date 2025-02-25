@@ -8,7 +8,6 @@ import { findLatestPosts } from '~/utils/Projects';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import type { Widget } from '~/types';
 import Button from '../ui/Button.astro';
-import ProjectGridItem from '../project/ProjectGridItem.astro';
 
 export interface Props extends Widget {
   title?: string;
@@ -57,7 +56,7 @@ const posts = APP_PROJECT.isEnabled ? await findLatestPosts({ count }) : [];
         {information && <p class="text-muted dark:text-slate-400 lg:text-sm lg:max-w-md" set:html={information} />}
       </div>
 
-      <ProjectGridItem posts={posts} />
+      <Grid posts={posts} />
     </WidgetWrapper>
   ) : (
     <Fragment />

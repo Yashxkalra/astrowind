@@ -27,15 +27,21 @@ const {
 
 <WidgetWrapper id={id} isDark={isDark} containerClass={` mx-auto ${classes?.container ?? ''}`} bg={bg}>
   <div
-    class="flex items-center justify-between bg-[#303030] dark:bg-[--aw-color-bg-cards] p-6 rounded-md shadow-xl dark:shadow-none dark:border dark:border-slate-600"
+    class="flex items-center bg-[#303030] mx-auto text-center p-6 rounded-md shadow-xl dark:shadow-none dark:border dark:border-slate-600"
   >
-    <h2
-      class="font-bold leading-tighter tracking-tighter font-heading text-heading text-3xl text-4xl md:mx-0! md:text-4xl font-bold leading-tighter tracking-tighter font-heading text-white"
-      set:html={title}
+    <Headline
+      title={title}
+      subtitle={subtitle}
+      tagline={tagline}
+      classes={{
+        container: 'mb-0 md:mb-0',
+        title: 'text-4xl md:text-4xl font-bold leading-tighter tracking-tighter font-heading text-white',
+        subtitle: 'text-xl text-muted dark:text-slate-400',
+      }}
     />
     {
       actions && (
-        <div class="max-w-xs sm:max-w-md flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4">
+        <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4">
           {Array.isArray(actions) ? (
             actions.map((action) => (
               <div class="flex w-full sm:w-auto">

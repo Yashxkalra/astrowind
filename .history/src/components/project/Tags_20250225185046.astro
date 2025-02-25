@@ -45,7 +45,7 @@ const { category, tags, class: className = 'text-sm', title = undefined, isCateg
           const link = getPermalink(tag.slug, isCategory ? 'project-category' : 'project_tag');
 
           return (
-            <li class="bg-gray-100 dark:bg-slate-700 inline-block mr-2 rtl:mr-0 rtl:ml-2 mb-2 py-0.5 px-2 lowercase font-medium">
+            <li class="bg-gray-100 dark:bg-[--aw-color-bg-cards] inline-block mr-2 rtl:mr-0 rtl:ml-2 mb-2 py-0.5 px-2 lowercase font-medium">
               {!APP_PROJECT?.tag?.isEnabled ? (
                 tag
               ) : (

@@ -168,6 +168,22 @@ const metadata = {
 
   <ProjectLatestPosts title="My Recent Work" />
 
+  <TestimonialSection
+    authorName="Jassy Khanna"
+    authorJob="Manager at Khanna company."
+    image={{
+      src: '~/assets/images/Testimonial-preview.png',
+      alt: 'Testimonial Photo',
+    }}
+    ><Fragment slot="testimonial">
+      I have finally found a guy that I believe i’ll be Working with for the rest of my career because <span
+        class="font-semibold text-[--aw-color-primary]"
+      >
+        he’s that good!
+      </span>
+    </Fragment></TestimonialSection
+  >
+
   <CaseStudies
     tagline="Case Studies"
     title="I've generated my clients thousands since 2022"
@@ -220,6 +236,15 @@ const metadata = {
       // Add more case studies as needed
     ]}
   />
+  <AboutAuthor
+    title="Hi 👋, my name is Yash Singh the founder and Lead designer of Sillyweb "
+    subtitle="Logos, websites, packaging design and more. Our trusted designer community has helped thousands of businesses launch, grow, expand and rebrand with custom, professional design."
+    image={{
+      src: '~/assets/images/Founder Photo.png',
+      alt: 'Founder "Yash Singh" Photo',
+    }}
+  />
+
   <CallToActionRect
     actions={[
       {
@@ -237,6 +262,8 @@ const metadata = {
       <span class="sm:whitespace-nowrap">Ready to start your project?</span>
     </Fragment>
   </CallToActionRect>
+  <!-- Features2 Widget ************** -->
+
   <Features2
     title="Why Businesses Love Working With Me"
     subtitle="I provide the best service to all our customers "
@@ -302,31 +329,6 @@ const metadata = {
     </Fragment>
   </Features2>
 
-  <!-- Features2 Widget ************** -->
-
-  <AboutAuthor
-    title="Hi 👋, my name is Yash Singh the founder and Lead designer of Sillyweb "
-    subtitle="Logos, websites, packaging design and more. Our trusted designer community has helped thousands of businesses launch, grow, expand and rebrand with custom, professional design."
-    image={{
-      src: '~/assets/images/Founder Photo.png',
-      alt: 'Founder "Yash Singh" Photo',
-    }}
-  />
-  <TestimonialSection
-    authorName="Jassy Khanna"
-    authorJob="Manager at Khanna company."
-    image={{
-      src: '~/assets/images/Testimonial-preview.png',
-      alt: 'Testimonial Photo',
-    }}
-    ><Fragment slot="testimonial">
-      I have finally found a guy that I believe i’ll be Working with for the rest of my career because <span
-        class="font-semibold text-[--aw-color-primary]"
-      >
-        he’s that good!
-      </span>
-    </Fragment></TestimonialSection
-  >
   <!-- Steps Widget ****************** -->
   <!-- 
   <Steps
@@ -360,6 +362,17 @@ const metadata = {
       alt: 'Steps image',
     }}
   /> -->
+
+  <!-- HighlightedPosts Widget ******* -->
+
+  <BlogLatestPosts
+    title="Find out more content in our Blog"
+    information={`The blog is used to display AstroWind documentation.
+                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
+                        Astro is a very interesting technology. Thanks.
+                `}
+  />
+
   <!-- Testimonials Widget *********** -->
 
   <Testimonials
@@ -403,8 +416,6 @@ const metadata = {
       icon: 'tabler:chevron-right',
     }}
   />
-  <!-- HighlightedPosts Widget ******* -->
-
   <!-- Case Studies Widget *********** -->
 
   <!-- Comparison bar Widget *********** -->
@@ -466,14 +477,6 @@ const metadata = {
         values: ['Sometimes', 'cross', 'cross', 'cross', 'cross', 'tick', 'cross'],
       },
     ]}
-  />
-
-  <BlogLatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
-                      Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
-                      Astro is a very interesting technology. Thanks.
-              `}
   />
 
   <!-- CallToAction Widget *********** -->
