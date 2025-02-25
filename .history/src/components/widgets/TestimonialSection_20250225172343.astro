@@ -1,6 +1,9 @@
 ---
+import Headline from '~/components/ui/Headline.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Button from '~/components/ui/Button.astro';
 import Image from '~/components/common/Image.astro';
+import type { Testimonials as Props } from '~/types';
 
 const {
   testimonial = Astro.slots.has('testimonial') ? Astro.slots.render('testimonial') : null,
@@ -41,7 +44,7 @@ const {
 
       <hr class="border-slate-200 dark:border-slate-600 my-4" />
 
-      <div class="flex flex-col gap-1">
+      <div class="flex flex-col gap-4">
         {
           image && (
             <div class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600">

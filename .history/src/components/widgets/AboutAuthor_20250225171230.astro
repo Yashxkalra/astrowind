@@ -19,12 +19,12 @@ const {
 <section class="relative pt-20 not-prose">
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
     <div class="py-12 md:py-20 lg:py-0 lg:flex lg:items-center lg:gap-8">
-      <div class="basis-1/2 pb-10 md:pb-16 mx-auto">
+      <div class="basis-1/2 md:pb-16 mx-auto">
         {
           title && (
             <>
               <h2
-                class="text-xl md:text-4xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200"
+                class="text-4xl md:text-4xl font-bold leading-tighter tracking-tighter  font-heading dark:text-gray-200"
                 set:html={title}
               />
               <div class="bg-[--aw-color-primary] w-20 h-2 mb-4"> </div>
@@ -38,7 +38,7 @@ const {
       <div class="basis-1/2 relative">
         {
           image && (
-            <div class="relative m-auto max-w-5xl shadow-2xl">
+            <div class="relative m-auto max-w-5xl">
               {typeof image === 'string' ? (
                 <Fragment set:html={image} />
               ) : (

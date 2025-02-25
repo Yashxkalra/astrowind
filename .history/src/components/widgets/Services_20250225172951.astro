@@ -1,0 +1,43 @@
+---
+import Headline from '../blog/Headline.astro';
+import ServicesCard from './ServicesCard.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import { Debug } from 'astro:components';
+
+export interface Props {
+  title?: string;
+  items?: Array<{
+    src: string;
+    image: {
+      src: string;
+      alt: string;
+    };
+    title: string;
+  }>;
+}
+const {
+  title = Astro.slots.has('title') ? Astro.slots.render('title') : null,
+  authorName = await Astro.slots.render('authorName'),
+  authorJob = await Astro.slots.render('authorJob'),
+  image = await Astro.slots.render('image'), // TODO: find HTMLElementProps
+
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+
+const { title = 'Design for what you need', items = [] } = Astro.props;
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={` mx-auto ${classes?.container ?? ''}`} bg={bg}>
+  <div class="bg-[#F5F5F5] dark:bg-[--aw-color-bg-cards] py-12">
+    <h2
+      class="text-3xl mb-8 font-bold tracking-tight sm:text-4xl sm:leading-none group font-heading mb-2"
+      set:html={title}
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {items.map((item, index) => <ServicesCard key={index} item={item} />)}
+    </div>
+  </div>
+</WidgetWrapper>

@@ -1,0 +1,31 @@
+---
+import ServicesCard from './ServicesCard.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+
+export interface Props {
+  title?: string;
+  items?: Array<{
+    src: string;
+    image: {
+      src: string;
+      alt: string;
+    };
+    title: string;
+  }>;
+}
+const { id, isDark = false, classes = {}, bg = await Astro.slots.render('bg') } = Astro.props;
+
+const { title = 'Design for what you need', items = [] } = Astro.props;
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={` mx-auto bg-[#F5F5F5] ${classes?.container ?? ''}`} bg={bg}>
+  <div class="">
+    <h2
+      class="text-3xl mb-8 font-bold tracking-tight sm:text-4xl sm:leading-none group font-heading mb-2"
+      set:html={title}
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {items.map((item, index) => <ServicesCard key={index} item={item} />)}
+    </div>
+  </div>
+</WidgetWrapper>

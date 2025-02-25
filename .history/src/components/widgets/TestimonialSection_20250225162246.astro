@@ -1,0 +1,59 @@
+---
+import Headline from '~/components/ui/Headline.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Button from '~/components/ui/Button.astro';
+import Image from '~/components/common/Image.astro';
+import type { Testimonials as Props } from '~/types';
+
+const {
+  testimonial = Astro.slots.has('testimonial') ? Astro.slots.render('testimonial') : null,
+  authorName = await Astro.slots.render('authorName'),
+  authorJob = await Astro.slots.render('authorJob'),
+  image = await Astro.slots.render('image'), // TODO: find HTMLElementProps
+
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+---
+
+<div class="flex h-auto flex-row">
+  <svg xmlns="http://www.w3.org/2000/svg" width="54" height="37" viewBox="0 0 54 37" fill="var(--aw-color-primary)">
+    <path
+      d="M18.1422 2.25716L27.139 6.25271L15.139 36.2527L0.644366 30.2527L18.1422 2.25716Z"
+      fill="var(--aw-color-primary)"></path>
+    <path
+      d="M44.7829 2.25716L53.7797 6.25271L41.7797 36.2527L27.285 30.2527L44.7829 2.25716Z"
+      fill="var(--aw-color-primary)"></path>
+  </svg>
+  <div class="flex flex-row gap-6 p-4 md:p-6 rounded-md shadow-xl dark:shadow-none dark:border dark:border-slate-600">
+    {testimonial && <h2 class="text-3xl pb-4" set:html={testimonial} />}
+
+    <hr class="border-slate-200 dark:border-slate-600 my-4" />
+
+    <div class="flex flex-col">
+      {
+        image && (
+          <div class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600">
+            {typeof image === 'string' ? (
+              <Fragment set:html={image} />
+            ) : (
+              <Image
+                class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600 min-w-full min-h-full"
+                width={40}
+                height={40}
+                widths={[400, 768]}
+                layout="fixed"
+                {...(image as any)}
+              />
+            )}
+          </div>
+        )
+      }
+
+      {authorName && <p class="text-lg font-semibold">{authorName}</p>}
+      {authorJob && <p class="text-sm text-muted">{authorJob}</p>}
+    </div>
+  </div>
+</div>

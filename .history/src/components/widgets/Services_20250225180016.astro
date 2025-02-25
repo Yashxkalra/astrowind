@@ -29,14 +29,9 @@ const { title = 'Design for what you need', items = [] } = Astro.props;
 </div>
 <style>
   /* layer: default */
-  @media (min-width: 420px) {
+  @media (min-width: 768px) {
     .service-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-  @media (min-width: 900px) {
-    .service-grid {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
 </style>

@@ -23,20 +23,7 @@ const { title = 'Design for what you need', items = [] } = Astro.props;
     class="text-3xl mb-8 font-bold tracking-tight sm:text-4xl sm:leading-none group font-heading mb-2"
     set:html={title}
   />
-  <div class="service-grid grid grid-cols-[minmax(300px,_1fr)] md:grid-cols-2 lg:grid-cols-4 gap-6">
+  <div class="grid grid-cols-[minmax(200px,_1fr)] md:grid-cols-2 lg:grid-cols-4 gap-6">
     {items.map((item, index) => <ServicesCard key={index} item={item} />)}
   </div>
 </div>
-<style>
-  /* layer: default */
-  @media (min-width: 420px) {
-    .service-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-  @media (min-width: 900px) {
-    .service-grid {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-  }
-</style>

@@ -24,7 +24,7 @@ const {
           title && (
             <>
               <h2
-                class="text-xl md:text-4xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200"
+                class="text-4xl md:text-4xl font-bold leading-tighter tracking-tighter  font-heading dark:text-gray-200"
                 set:html={title}
               />
               <div class="bg-[--aw-color-primary] w-20 h-2 mb-4"> </div>
@@ -38,7 +38,7 @@ const {
       <div class="basis-1/2 relative">
         {
           image && (
-            <div class="relative m-auto max-w-5xl shadow-2xl">
+            <div class="relative m-auto max-w-5xl">
               {typeof image === 'string' ? (
                 <Fragment set:html={image} />
               ) : (
