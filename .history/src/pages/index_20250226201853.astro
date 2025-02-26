@@ -2,7 +2,8 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 import Features2 from '~/components/widgets/Features2.astro';
-
+import Steps from '~/components/widgets/Steps.astro';
+import Content from '~/components/widgets/Content.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 
 import FAQs from '~/components/widgets/FAQs.astro';
@@ -20,7 +21,6 @@ import Services from '~/components/widgets/Services.astro';
 import AboutAuthor from '~/components/widgets/AboutAuthor.astro';
 import TestimonialSection from '~/components/widgets/TestimonialSection.astro';
 import CallToActionRect from '~/components/widgets/CallToActionRect.astro';
-import Content2 from '~/components/widgets/Content2.astro';
 
 const metadata = {
   title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
@@ -67,13 +67,14 @@ const metadata = {
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline"> </span>
-      I design <span class="font-bold">websites that convert, book covers that sell, and ads that stop the scroll</span>
-      so you can focus on growing your business, not fixing amateur designs
+      I design websites that convert, that stop the scroll—so you can focus on growing your business, not fixing amateur
+      designs. <span class="font-semibold">websites that convert, book covers that sell, and ads</span> for small businesses
+      ready to stand out.
     </Fragment>
   </Hero3>
 
   <Services
-    title="What I can do for You"
+    title="What I Create for You"
     items={[
       {
         title: 'Book Cover Design',
@@ -112,39 +113,39 @@ const metadata = {
 
   <Stats
     stats={[
-      { title: '🔥Projects Delivered', amount: '30+' },
-      { title: '😊Client Satisfaction', amount: '99.9% ' },
-      { title: '⭐Star Reviews', amount: '25+' },
-      { title: '🏆Competition Wins', amount: '17+' },
+      { title: 'Projects Delivered', amount: '300+' },
+      { title: 'Client Satisfaction', amount: '98% ' },
+      { title: 'Star Reviews on Google', amount: '30+' },
     ]}
   />
   <!-- Content Widget **************** -->
 
-  <Content2
-    title="Does This Sound Familiar?"
-    subtitle=""
+  <Content
     isReversed
-    colorGiven="red"
     items={[
       {
-        title: 'Your website looks outdated, and visitors leave without buying',
-        description: 'Outdated designs and slow loading times push visitors away… and algorithms ignore you.',
-        icon: 'tabler:x',
+        title: 'Exceptional Design Quality',
+        description:
+          'I always deliver outstanding designs that captivate and inspire, driven by my commitment to excellence.',
+        icon: 'tabler:diamond',
       },
       {
-        title: 'Your book cover blends in on Amazon, costing you sales',
-        description: 'Generic covers = lost sales. Readers judge books by their covers, and so do algorithms.',
-        icon: 'tabler:x',
+        title: 'Unmatched Creativity',
+        description:
+          'I always brings fresh and innovative ideas to every project, crafting unique designs that set my clients apart',
+        icon: 'tabler:wand',
       },
       {
-        title: 'Your social ads get ignored, wasting your ad budget',
-        description: 'Bland banners get scrolled past. You’re paying for clicks, not customers."',
-        icon: 'tabler:x',
+        title: 'Fast Turnaround Time',
+        description:
+          'I understand the importance of timely delivery, helping you meet deadlines and launch your materials promptly.',
+        icon: 'tabler:clock-24',
       },
       {
-        title: 'You’re stuck with generic designs that don’t reflect your brand',
-        description: '',
-        icon: 'tabler:x',
+        title: 'Client-Centric Approach',
+        description:
+          'I prioritize your needs, understanding your goals to tailor designs that align with your brand identity.',
+        icon: 'tabler:mood-heart',
       },
     ]}
     image={{
@@ -153,75 +154,17 @@ const metadata = {
     }}
   >
     <Fragment slot="content">
-      You’re not alone. <span class="font-bold"> Most businesses settle for ‘good enough’ designs… </span> but good enough
-      doesn’t pay the bills. Most designers just make things <span class="font-bold">‘look pretty’</span> but I can fix what’s
-      actually costing you sales
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Why Businesses Love Working With Me
+      </h2>
+      Every business needs to be online. Stand out from the competition and make your brand look its best with stunning web
+      page design. With Sillyweb web design services, you'll get thoughtful, effective web page designs created by professionals.
     </Fragment>
 
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent">g</div>
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
-  </Content2>
-
-  <Content2
-    title="Why 30+ Businesses & Authors Trust Me as Their Secret Weapon"
-    subtitle=""
-    colorGiven="--aw-color-primary"
-    items={[
-      {
-        title: 'Focused Expertise',
-        description:
-          'I only work with small businesses and indie authors—no corporate fluff. I know exactly what makes your audience click, buy, and binge. No jack-of-all-trades here. I specialize in niches that matter to YOU.',
-        icon: 'tabler:check',
-      },
-      {
-        title: 'Quality designs in your budget',
-        description:
-          'Get agency-quality designs without the agency price tag. How? I cut the bloat and focus on what actually moves the needle.',
-        icon: 'tabler:check',
-      },
-      {
-        title: 'Proven Results',
-        description: 'I don’t just design—I engineer outcomes.Clients average 3x ROI on ad designs',
-        icon: 'tabler:check',
-      },
-      {
-        title: 'Speed + Precision',
-        description:
-          'I work fast, but never rush. You’ll get 3 concepts in 48 hours, refined until you’re obsessed. Unlimited revisions. Pay nothing until you approve the draft',
-        icon: 'tabler:check',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Colorful Image',
-    }}
-  >
-    <Fragment slot="content">
-      <span class="font-bold"> </span>
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent">g</div>
-    </Fragment>
-  </Content2>
-
-  <TestimonialSection
-    authorName="Jassy Khanna"
-    authorJob="Manager at Khanna company."
-    image={{
-      src: '~/assets/images/Testimonial-preview.png',
-      alt: 'Testimonial Photo',
-    }}
-    ><Fragment slot="testimonial">
-      Yash redesigned my website, and my conversion rate jumped from 1.2% to 4.8% in a week. I have finally found a guy
-      that I believe i’ll be Working with for the rest of my career because <span
-        class="font-semibold text-[--aw-color-primary]"
-      >
-        he’s that good!
-      </span>
-    </Fragment></TestimonialSection
-  >
+  </Content>
 
   <ProjectLatestPosts title="My Recent Work" />
 
@@ -369,7 +312,21 @@ const metadata = {
       alt: 'Founder "Yash Singh" Photo',
     }}
   />
-
+  <TestimonialSection
+    authorName="Jassy Khanna"
+    authorJob="Manager at Khanna company."
+    image={{
+      src: '~/assets/images/Testimonial-preview.png',
+      alt: 'Testimonial Photo',
+    }}
+    ><Fragment slot="testimonial">
+      I have finally found a guy that I believe i’ll be Working with for the rest of my career because <span
+        class="font-semibold text-[--aw-color-primary]"
+      >
+        he’s that good!
+      </span>
+    </Fragment></TestimonialSection
+  >
   <!-- Steps Widget ****************** -->
   <!-- 
   <Steps
